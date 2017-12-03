@@ -28,7 +28,6 @@ public class GroupControllerTest {
 	public void testGetGroup() throws Exception {
 		mvc.perform(get("/group/{groupId}",1))
         	.andExpect(status().isOk())
-        	.andExpect(jsonPath("$").isArray())
         	.andExpect(jsonPath("$.id").isNumber())
         	.andExpect(jsonPath("$.members[0]").exists())
         	.andExpect(jsonPath("$.members[0].id").isNumber())
@@ -97,7 +96,6 @@ public class GroupControllerTest {
 	public void testGetGrade() throws Exception {
 		mvc.perform(get("/group/{groupId}/grade",1))
 	    	.andExpect(status().isOk())
-	    	.andExpect(jsonPath("$").isArray())
 	    	.andExpect(jsonPath("$.presentationGrade[0]").exists())
 	    	.andExpect(jsonPath("$.presentationGrade[0].topicId").isNumber())
 	    	.andExpect(jsonPath("$.presentationGrade[0].grade").isNumber())
