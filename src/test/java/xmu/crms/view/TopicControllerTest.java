@@ -17,6 +17,11 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import xmu.crms.controller.TopicController;
 
+/**
+ * URL-pattern:prefix="/topic"
+ * @author Huhui
+ * @date 2017-12-04
+ */
 @RunWith(SpringRunner.class)
 @WebMvcTest(TopicController.class)
 public class TopicControllerTest {
