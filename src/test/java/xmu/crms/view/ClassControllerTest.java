@@ -1,4 +1,4 @@
-package xmu.crms.view;
+﻿package xmu.crms.view;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -55,7 +55,7 @@ public class ClassControllerTest {
      */
     @Test
     public void testGetClass() throws Exception{
-        mvc.perform(get("/class/{classId}", 1))
+        mvc.perform(get("/class/1", 1))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.id").isNumber())
         .andExpect(jsonPath("$.name").isString())
@@ -76,7 +76,7 @@ public class ClassControllerTest {
      */
     @Test
     public void testUpdateClass() throws Exception {
-        mvc.perform(put("/class/{classId}", 1)
+        mvc.perform(put("/class/1", 1)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                  .content("{\"name\": \"周三1-2节\", \"numStudent\": 120, \"time\": \"周三12节、周一34节\", \"site\": \"海韵201、公寓405\", \"calling\": -1, \"roster\": \"/roster/周三12班.xlsx\", \"proportions\": {\"report\": 50, \"presentation\": 50, \"c\": 20, \"b\": 60, \"a\": 20 }}".getBytes())
                  )
@@ -92,7 +92,7 @@ public class ClassControllerTest {
      */
     @Test
     public void testDeleteClass() throws Exception {
-        mvc.perform(delete("/class/{classId}", 1))
+        mvc.perform(delete("/class/1", 1))
         .andExpect(status().isNoContent())
         .andDo(print());
     }
@@ -105,7 +105,7 @@ public class ClassControllerTest {
      */   
     @Test
     public void testGetStudentList() throws Exception {
-        mvc.perform(get("/class/{classId}/student"))
+        mvc.perform(get("/class/1/student"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$").isArray())
         .andExpect(jsonPath("$[0]").exists())
@@ -123,7 +123,7 @@ public class ClassControllerTest {
      */   
     @Test
     public void testChooseClass() throws Exception {
-        mvc.perform(post("/class/{classId}/student", 1)
+        mvc.perform(post("/class/1/student", 1)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content("{\"id\": 233}".getBytes()))
         .andExpect(status().isCreated())
@@ -139,7 +139,7 @@ public class ClassControllerTest {
      */   
     @Test
     public void testCancelClass() throws Exception {
-        mvc.perform(delete("/class/{classId}/student/{studentId}", 1, 1))
+        mvc.perform(delete("/class/1/student/1", 1, 1))
         .andExpect(status().isNoContent())
         .andDo(print());        
     }
@@ -152,7 +152,7 @@ public class ClassControllerTest {
      */   
     @Test
     public void testGetClassgroup() throws Exception {
-        mvc.perform(get("/class/{classId}/classgroup", 1))
+        mvc.perform(get("/class/1/classgroup", 1))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.leader").isArray())
         .andExpect(jsonPath("$.members").isArray())
@@ -173,7 +173,7 @@ public class ClassControllerTest {
     @Test
     public void resignLeader() throws Exception {
         mvc
-                .perform(put("/class/{classId}/classgroup/resign")
+                .perform(put("/class/1/classgroup/resign")
                 		.contentType(MediaType.APPLICATION_JSON_UTF8)
                         .content("{\"id\": 247}".getBytes())
                 		) 
@@ -191,7 +191,7 @@ public class ClassControllerTest {
     @Test
     public void assignLeader() throws Exception {
         mvc
-                .perform(put("/class/{classId}/classgroup/assign")
+                .perform(put("/class/1/classgroup/assign")
                 		.contentType(MediaType.APPLICATION_JSON_UTF8)
                         .content("{\"id\": 247}".getBytes())
                 		) 
@@ -209,7 +209,7 @@ public class ClassControllerTest {
     @Test
     public void addMember() throws Exception {
         mvc
-                .perform(put("/class/{classId}/classgroup/add")
+                .perform(put("/class/1/classgroup/add")
                 		.contentType(MediaType.APPLICATION_JSON_UTF8)
                         .content("{\"id\": 247}".getBytes())
                 		) 
@@ -227,7 +227,7 @@ public class ClassControllerTest {
     @Test
     public void removeMember() throws Exception {
         mvc
-                .perform(put("/class/{classId}/classgroup/remove")
+                .perform(put("/class/1/classgroup/remove")
                 		.contentType(MediaType.APPLICATION_JSON_UTF8)
                         .content("{\"id\": 247}".getBytes())
                 		) 
