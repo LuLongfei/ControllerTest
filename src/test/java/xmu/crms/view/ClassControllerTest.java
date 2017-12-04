@@ -78,7 +78,7 @@ public class ClassControllerTest {
     public void testUpdateClass() throws Exception {
         mvc.perform(put("/class/{classId}", 1)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                 .content("{\"name\": \"周三1-2节\", \"numStudent\": 120, \"time\": \"周三12节、周一34节\", \"site\": \"海韵201、公寓405\", \"calling\": -1, \"roster\": \"/roster/周三12班.xlsx\", \"proportions\": {\"report\": 50, \"presentation\": 50, \"3\": 20, \"4\": 60, \"5\": 20 }}".getBytes())
+                 .content("{\"name\": \"周三1-2节\", \"numStudent\": 120, \"time\": \"周三12节、周一34节\", \"site\": \"海韵201、公寓405\", \"calling\": -1, \"roster\": \"/roster/周三12班.xlsx\", \"proportions\": {\"report\": 50, \"presentation\": 50, \"c\": 20, \"b\": 60, \"a\": 20 }}".getBytes())
                  )
         .andExpect(status().isNoContent())
         .andDo(print());
