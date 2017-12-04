@@ -1,4 +1,4 @@
-package xmu.crms.view;
+package xmu.crms.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +34,7 @@ public class GroupControllerTest {
         	.andExpect(jsonPath("$.members[0].name").isString())
         	.andDo(print());
 	}
-	
+
 	@Test
 	public void testResign() throws Exception {
 		mvc.perform(put("/group/{groupId}/resign",1)
@@ -56,7 +56,7 @@ public class GroupControllerTest {
 	}
 	
 	@Test
-	public void testAdd() throws Exception {
+	public void testAddMember() throws Exception {
 		mvc.perform(put("/group/{groupId}/add",1)
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
 				.content("{\"id\": 247}".getBytes())
@@ -66,7 +66,7 @@ public class GroupControllerTest {
 	}
 	
 	@Test
-	public void testRemove() throws Exception {
+	public void testRemoveMember() throws Exception {
 		mvc.perform(put("/group/{groupId}/remove",1)
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
 				.content("{\"id\": 247}".getBytes())
@@ -81,7 +81,7 @@ public class GroupControllerTest {
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
 				.content("{\"id\": 23}".getBytes())
 				)
-			.andExpect(status().isNoContent())
+			.andExpect(status().isCreated())
 			.andDo(print());
 	}
 	
@@ -105,7 +105,7 @@ public class GroupControllerTest {
 	}
 	
 	@Test
-	public void testPutReport() throws Exception {
+	public void testSetReportGrade() throws Exception {
 		mvc.perform(put("/group/{groupId}/grade/report",1)
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
 				.content("{\"reportGrade\": 5}".getBytes())
@@ -115,12 +115,13 @@ public class GroupControllerTest {
 	}
 	
 	@Test
-	public void testPutPreGrade() throws Exception {
-		mvc.perform(put("/group/{groupId}/grade/presentation/{studentId}",1,12)
+	public void testSetPresentationGrade() throws Exception {
+		mvc.perform(put("/group/{groupId}/grade/presentation/{studentId}",1,1)
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
-				.content("{\"presentationGrade\": [{\"topicId\": 257, \"grade\": 5}, {\"topicId\": 258, \"grade\": 4}]}".getBytes())
+				.content("{\"presentationGrade\": [{\"topicId\": 257, \"grade\": 4}, {\"topicId\": 258, \"grade\": 5}]}".getBytes())
 				)
 			.andExpect(status().isNoContent())
 			.andDo(print());
 	}
+
 }
