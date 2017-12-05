@@ -100,9 +100,9 @@ public class SeminarControllerTest {
 	public void testGetSeminarTopicById() throws Exception{
 		mockMvc.perform(get("/seminar/3/topic"))
 		       .andExpect(status().isOk())
-		       .andExpect(jsonPath("id").exists())
-		       .andExpect(jsonPath("serial").exists())
-		       .andExpect(jsonPath("description").exists());	
+		       .andExpect(jsonPath("$[0].id").exists())
+		       .andExpect(jsonPath("$[0].serial").exists())
+		       .andExpect(jsonPath("$[0].description").exists());	
 	}
 	
 	/**
@@ -126,8 +126,8 @@ public class SeminarControllerTest {
 	public void testGetGroupById() throws Exception{
 		mockMvc.perform(get("/seminar/3/group"))
 		       .andExpect(status().isOk())
-		       .andExpect(jsonPath("id").exists())
-		       .andExpect(jsonPath("name").exists());
+		       .andExpect(jsonPath("$[0].id").exists())
+		       .andExpect(jsonPath("$[0].name").exists());
 		
 	}
 	
@@ -147,7 +147,7 @@ public class SeminarControllerTest {
 	 */
 	@Test
 	public void testGetAttendenceById() throws Exception{
-		mockMvc.perform(get("/seminar/3/class/1/attendence"))
+		mockMvc.perform(get("/seminar/3/class/1/attendance"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("numPresent").exists())
 				.andExpect(jsonPath("numStudent").exists())
