@@ -153,6 +153,7 @@ public class ClassControllerTest {
     public void testGetClassgroup() throws Exception {
         mvc.perform(get("/class/{classId}/classgroup", 1))
         .andExpect(status().isOk())
+	.andExpect(jsonPath("$.leader").isMap())
         .andExpect(jsonPath("$.members").isArray())
         .andExpect(jsonPath("$.members[0]").exists())
         .andExpect(jsonPath("$.members[0].id").isNumber())
