@@ -24,7 +24,7 @@ import net.minidev.json.parser.JSONParser;
  */
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(SeminarController.class)
+@WebMvcTest()
 public class SeminarControllerTest {
 
 	@Autowired 
