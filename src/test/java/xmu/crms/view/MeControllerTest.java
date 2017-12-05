@@ -53,7 +53,7 @@ public class MeControllerTest {
         //如果成功返回204
         this.mockMvc.perform(put("/me")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content("{\"id\": 233,\"name\":\"张三\",\"number\"：\"24320152202333\",\"email\":\"24320152202333@stu.xmu.edu.cn\",\"gender\":\"female\",\"title\":\"\",\"avatar\":\"/avatar/3486.png\"}".getBytes()))
+                .content("{\"id\": 233,\"name\":\"张三\",\"number\"：\"24320152202333\",\"email\":\"24320152202333@stu.xmu.edu.cn\",\"gender\":\"female\",\"province\":\"XX省\",\"city\":\"XX市\",\"school\":\"XX学校\",\"title\":\"\"}".getBytes()))
                 .andExpect(status().isNoContent());
     }
     
