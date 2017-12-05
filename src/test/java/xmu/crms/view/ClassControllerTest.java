@@ -1,4 +1,4 @@
-﻿package xmu.crms.view;
+package xmu.crms.view;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -13,14 +13,13 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import xmu.crms.controller.ClassController;
 /**
  * URL-pattern:prefix="/class"
  * @author ZDD、Huhui
  * @date 2017-12-04
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(ClassController.class)
+@WebMvcTest
 public class ClassControllerTest {
 	@Autowired
     private MockMvc mvc;
