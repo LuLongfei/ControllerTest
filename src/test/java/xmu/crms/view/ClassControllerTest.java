@@ -63,7 +63,7 @@ public class ClassControllerTest {
         .andExpect(jsonPath("$.site").isString())
         .andExpect(jsonPath("$.calling").isNumber())
         .andExpect(jsonPath("$.roster").isString())
-        .andExpect(jsonPath("$.proportions").isArray())
+        .andExpect(jsonPath("$.proportions").isMap())
         .andDo(print());
     }
     
