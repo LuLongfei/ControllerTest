@@ -61,7 +61,7 @@ public class CourseControllerTest {
         mvc
                 .perform(post("/course")
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content("{\"name\": \"OOAD\", \"description\": \"面向对象分析与设计\", \"startTime\": \"2017-09-20\", \"endTime\": \"2018-1-31\", \"proportions\": {\"report\": 50, \"presentation\": 50, \"3\": 20, \"4\": 60, \"5\": 20 }}".getBytes()))
+                        .content("{\"name\": \"OOAD\", \"description\": \"面向对象分析与设计\", \"startTime\": \"2017-09-20\", \"endTime\": \"2018-1-31\", \"proportions\": {\"report\": 50, \"presentation\": 50, \"c\": 20, \"b\": 60, \"a\": 20 }}".getBytes()))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").isNumber())
                 .andDo(print());
@@ -100,7 +100,7 @@ public class CourseControllerTest {
         mvc
                 .perform(put("/course/{courseId}", 1)
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content("{\"name\": \"OOAD\", \"description\": \"面向对象分析与设计\", \"startTime\": \"2017-09-20\", \"endTime\": \"2018-1-1\", \"proportions\": {\"report\": 70, \"presentation\": 30, \"3\": 20, \"4\": 60, \"5\": 20 }}".getBytes())
+                        .content("{\"name\": \"OOAD\", \"description\": \"面向对象分析与设计\", \"startTime\": \"2017-09-20\", \"endTime\": \"2018-1-1\", \"proportions\": {\"report\": 70, \"presentation\": 30, \"c\": 20, \"b\": 60, \"a\": 20 }}".getBytes())
                 )
                 .andExpect(status().isNoContent())
                 .andDo(print());
@@ -152,7 +152,7 @@ public class CourseControllerTest {
         mvc
                 .perform(post("/course/{courseId}/class", 1)
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content("\"name\": \"周三1-2节\", \"site\": \"海韵212\",\"time\": [{ \"week\": 1, \"day\": 1, \"time\": [1,2]}, {\"week\": 0, \"day\": 3, \"time\": [3,4]}], \"proportions\": {\"report\": 50, \"presentation\": 50, \"3\": 10, \"4\": 60, \"5\": 30 }}".getBytes()))
+                        .content("\"name\": \"周三1-2节\", \"site\": \"海韵212\",\"time\": [{ \"week\": 1, \"day\": 1, \"time\": [1,2]}, {\"week\": 0, \"day\": 3, \"time\": [3,4]}], \"proportions\": {\"report\": 50, \"presentation\": 50, \"c\": 10, \"b\": 60, \"a\": 30 }}".getBytes()))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").isNumber())
                 .andDo(print());
@@ -193,7 +193,7 @@ public class CourseControllerTest {
         mvc
                 .perform(post("/course/{courseId}/seminar", 1)
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content("{\"name\": \"概要设计\", \"description\": \"模型层与数据库设计\", \"groupingMethod\": \"fixed\", \"startTime\": \"2017-10-10\", \"endTime\": \"2017-10-24\", \"proportions\": {\"report\": 50, \"presentation\": 50, \"3\": 20, \"4\": 60, \"5\": 20 }}".getBytes()))
+                        .content("{\"name\": \"概要设计\", \"description\": \"模型层与数据库设计\", \"groupingMethod\": \"fixed\", \"startTime\": \"2017-10-10\", \"endTime\": \"2017-10-24\", \"proportions\": {\"report\": 50, \"presentation\": 50, \"c\": 20, \"b\": 60, \"a\": 20 }}".getBytes()))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").isNumber())
                 .andDo(print());
