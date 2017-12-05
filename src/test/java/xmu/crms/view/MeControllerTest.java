@@ -38,7 +38,7 @@ public class MeControllerTest {
                         .andExpect(jsonPath("$.phone").isString())
                         .andExpect(jsonPath("$.email").isString())
                         .andExpect(jsonPath("$.gender").isString())
-                        .andExpect(jsonPath("$.schoole").isMap())
+                        .andExpect(jsonPath("$.school").isMap())
                         .andExpect(jsonPath("$.title").isString())
                         .andExpect(jsonPath("$.avatar").isString());
     }
@@ -51,13 +51,9 @@ public class MeControllerTest {
     @Test
     public void testUpdateCurrentUser() throws Exception{
         //如果成功返回204
-        this.mockMvc.perform(patch("/me")
-                .param("name", "张三")
-                .param("number", "24320152202333")
-                .param("email", "24320152202333@stu.xmu.edu.cn")
-                .param("gender","female")
-                .param("title", "")
-                .param("avatar","/avatar/3486.png"))
+        this.mockMvc.perform(put("/me")
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content("{\"id\": 233,\"name\":\"张三\",\"number\"：\"24320152202333\",\"email\":\"24320152202333@stu.xmu.edu.cn\",\"gender\":\"female\",\"title\":\"\",\"avatar\":\"/avatar/3486.png\"}".getBytes()))
                 .andExpect(status().isNoContent());
     }
     
@@ -69,7 +65,7 @@ public class MeControllerTest {
     @Test
     public void testSigninWechat() throws Exception{
         //如果成功返回用户信息的JSON形式
-        this.mockMvc.perform(get("/signin"))
+        this.mockMvc.perform(get("/signin?code=ghjiugh&state=wrerfwe3er&success_url=student_index.html"))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.id").isNotEmpty())
                     .andExpect(jsonPath("$.type").isString())
@@ -104,10 +100,14 @@ public class MeControllerTest {
     @Test
     public void testCreateNewAccount() throws Exception{
         //如果成功返回用户信息
-        this.mockMvc.perform(post("/register"))
+        this.mockMvc.perform(post("/register")
+                .param("phone", "189111114514")
+                .param("password","qwer2345!"))
                         .andExpect(status().isOk())
                         .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                        .andExpect(jsonPath("$.phone").isString())
-                        .andExpect(jsonPath("$.password").isString());
+                        .andExpect(jsonPath("$.id").isNumber())
+                        .andExpect(jsonPath("$.name").isString())
+                        .andExpect(jsonPath("$.type").isString())
+                        .andExpect(jsonPath("$.jwt").isString());
     }
 }
