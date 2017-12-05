@@ -35,7 +35,7 @@ public class SeminarControllerTest {
 	 */
 	@Test
 	public void testGetSeminarById() throws Exception{
-		mockMvc.perform(get("/seminar/3"))
+		mockMvc.perform(get("/seminar/32"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("id").exists())
 				.andExpect(jsonPath("name").exists())
@@ -55,7 +55,7 @@ public class SeminarControllerTest {
 						.param("groupingMethod", "fixed")
 						.param("startTime","2017-10-11")
 						.param("endTime", "2017-10-24"))
-			   .andExpect(status().isOk());
+			   .andExpect(status().isNoContent());
 	}
 	/**
 	 * 按ID删除讨论课
@@ -116,7 +116,7 @@ public class SeminarControllerTest {
 						.param("name", "领域模型与模块")
 						.param("description", "Domain model与模块划分")
 						.param("groupLimit","5"))
-			   .andExpect(status().isOk());
+			   .andExpect(status().isCreated());
 	}
 	
 	/**
