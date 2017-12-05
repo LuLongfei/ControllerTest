@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
  */
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(GroupController.class)
+@WebMvcTest
 public class GroupControllerTest {
 
 	@Autowired
