@@ -30,7 +30,7 @@ public class UploadControllerTest {
     public void testUploadAvatar() throws Exception{
         //如果成功返回1个URL
         this.mockMvc.perform(post("/upload/avatar"))
-                        .andExpect(status().isOk())
+                        .andExpect(status().isCreated())
                         .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                         .andExpect(jsonPath("$.url").isString());
                         
