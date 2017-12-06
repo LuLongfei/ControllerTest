@@ -152,7 +152,18 @@ public class CourseControllerTest {
         mvc
                 .perform(post("/course/{courseId}/class", 1)
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content("\"name\": \"周三1-2节\", \"site\": \"海韵212\",\"time\": [{ \"week\": 1, \"day\": 1, \"time\": [1,2]}, {\"week\": 0, \"day\": 3, \"time\": [3,4]}], \"proportions\": {\"report\": 50, \"presentation\": 50, \"c\": 10, \"b\": 60, \"a\": 30 }}".getBytes()))
+                        .content("{\n" +
+                                "  \"name\": \"周三1-2节\",\n" +
+                                "  \"site\": \"海韵212\",\n" +
+                                "  \"time\": \"周三一二节\",\n" +
+                                "  \"proportions\": {\n" +
+                                "    \"report\": 50,\n" +
+                                "    \"presentation\": 50,\n" +
+                                "    \"c\": 10,\n" +
+                                "    \"b\": 60,\n" +
+                                "    \"a\": 30\n" +
+                                "  }\n" +
+                                "}"))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").isNumber())
                 .andDo(print());
