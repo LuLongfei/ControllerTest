@@ -1,5 +1,4 @@
-//package xmu.crms.view;
-package controller;
+package xmu.crms.view;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.junit.Test;
