@@ -23,7 +23,7 @@ import xmu.crms.controller.TopicController;
  * @date 2017-12-04
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(TopicController.class)
+@WebMvcTest
 public class TopicControllerTest {
 	@Autowired
 	private MockMvc mvc;
