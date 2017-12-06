@@ -159,7 +159,7 @@ public class SeminarControllerTest {
 	 */
 	@Test
 	public void testGetAttendenceListById() throws Exception{
-		mockMvc.perform(get("/seminar/3/class/1/attendance"))
+		mockMvc.perform(get("/seminar/3/class/1/attendance/present"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].id").exists())
 				.andExpect(jsonPath("$[0].name").exists());
